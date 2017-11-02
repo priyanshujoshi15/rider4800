@@ -17,7 +17,9 @@ public class IndexController
 	
 @Autowired
 UserDao userDao;
-
+/*
+This is for testing Only
+*/
 
 @RequestMapping("/")
 public String index()
