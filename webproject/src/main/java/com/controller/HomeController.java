@@ -2,7 +2,6 @@ package com.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
- 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  
 @Controller
 public class HomeController {
- 
-     
-    @RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
+
+	
+    @RequestMapping(value = { /*"/", */"/home" }, method = RequestMethod.GET)
     public String homePage(ModelMap model) {
         model.addAttribute("user", getPrincipal());
         return "welcome";

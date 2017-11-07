@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,6 +16,7 @@
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet" />
+<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 <title>Login Page</title>
 </head>
 
@@ -23,33 +25,41 @@
 
 	<form:form modelAttribute="user" action="login" method="POST">
 
+		<c:if test="${param.error != null}">
+			<div class="alert alert-danger">
+				<p>Invalid username and password.</p>
+			</div>
+		</c:if>
+		<c:if test="${param.logout != null}">
+			<div class="alert alert-success">
+				<p>You have been logged out successfully.</p>
+			</div>
+		</c:if>
+
 		<table align="center">
 
 			<tr>
 
-				<td>Email:</td>
+				<td>Email</td>
 
-				<td><input type="text" name="email" id="email" />
+				<td><input type="text" name="email" id="email" /></td>
 
+			</tr>
+
+			<tr>
+
+				<td>Password</td>
+
+				<td><input type="password" name="password" id="password" /> <input
+					type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				</td>
 
 			</tr>
 
 			<tr>
 
-				<td>Password"</td>
-
-				<td><input type="password" name="password"
-						id="password" />
-						<input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
-						</td>
-
-			</tr>
-
-			<tr>
-
 				<td></td>
-                     
+
 				<td align="left"><input type="submit" id="login" value="Login">
 
 				</td>
@@ -68,17 +78,9 @@
 
 		</table>
 
+
+
 	</form:form>
-<%-- 
-	<table align="center">
-
-		<tr>
-
-			<td style="font-style: italic; color: red;">${message}</td>
-
-		</tr>
-
-	</table> --%>
 
 </body>
 </html>

@@ -18,11 +18,11 @@ public class IndexController {
 	@Autowired
 	UserDao userDao;
 
-/*	@RequestMapping("/")
+	@RequestMapping("/")
 	public String index() {
 		return "index";
 	}
-*/
+
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView goToRegister() {
 		ModelAndView mv = new ModelAndView();
