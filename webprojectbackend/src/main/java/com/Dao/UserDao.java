@@ -13,4 +13,6 @@ public interface UserDao
 	public User getUserByEmail(String email);
 	
 	public List<User> getAllUsers();
+	
+	public boolean validateUser(String email, String pswd);
 }
