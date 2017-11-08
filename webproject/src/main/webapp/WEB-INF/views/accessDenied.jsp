@@ -6,7 +6,9 @@
     <title>AccessDenied page</title>
 </head>
 <body>
-    Dear <strong>${user}</strong>, You are not authorized to access this page
-    <a href="<c:url value="/logout" />">Logout</a>
+<%@ include file="/WEB-INF/views/header.jsp" %>
+    Dear <strong>${user}</strong>, You credentials are empty !! Please try again.
+        <%-- <a href="<c:url value="/logout" />">Logout</a> --%>
+    <a href="<c:url value = "/login"/>">Retry Login !!</a>
 </body>
 </html>

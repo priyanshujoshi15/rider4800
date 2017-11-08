@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" Content="width=device-width, initial-scale=1">
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -37,10 +37,10 @@
 			<li><a href="<c:url value = "/register"/>"><span
 					class="glyphicon glyphicon-user"></span>Register</a></li>
 
-			<li><a href="<c:url value = "/login"/>"><i class="glyphicon glyphicon-log-in"
-					aria-hidden="true"></i>Login</a></li>
+			<li><a href="<c:url value = "/login"/>"><span
+					class="glyphicon glyphicon-log-in"></span>Login</a></li>
 
-			<li><a href="<c:url value = "/"/>">Home</a></li>
+			<%-- <li><a href="<c:url value = "/"/>">Home</a></li> --%>
 
 			<%-- <li class="dropdown-menu"><a class="dropdown-toggle"
 				data-toggle="dropdown" href="#">Category <span class="caret"></span></a>
@@ -53,7 +53,8 @@
 
 					</c:forEach>
 				</ul></li>
- --%>		</ul>
+ --%>
+		</ul>
 	</div>
 	</nav>
 

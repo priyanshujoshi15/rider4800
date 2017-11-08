@@ -72,7 +72,7 @@
 
 				<td></td>
 
-				<td><a href="index.jsp">Home</a></td>
+				<td><a href="<c:url value = "/"/>">Home</a></td>
 
 			</tr>
 
