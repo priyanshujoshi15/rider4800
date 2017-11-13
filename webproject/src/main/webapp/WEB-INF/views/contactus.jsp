@@ -19,7 +19,9 @@
 
 <title>Contact Us</title>
 </head>
+
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 	<form id="contact_form" action="#" method="POST"
 		enctype="multipart/form-data">
 		<div class="row">

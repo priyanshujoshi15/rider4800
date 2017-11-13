@@ -6,7 +6,7 @@
     <title>AccessDenied page</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/header.jsp" %>
+<jsp:include page="header.jsp"></jsp:include>
  	Your credentials are empty or wrong.. !! Please try again.
 
     <a href="${pageContext.request.contextPath }/admin/index/">Retry Login !!</a>

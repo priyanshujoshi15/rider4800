@@ -20,6 +20,7 @@ public class User implements Serializable{		//this class will be used as reposit
 	private String role;
 	private String address;
 	private String phone;
+	
 	public String getEmail() {
 		return email;
 	}

@@ -2,7 +2,6 @@ package com.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -45,21 +44,23 @@ public class indexController {
 	public String login() {
 		return "/login";
 	}
-	
-	@RequestMapping(value="/logout", method = RequestMethod.GET)
-	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
-	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    if (auth != null){    
-	        new SecurityContextLogoutHandler().logout(request, response, auth);
-	    }
-	    return "redirect:/login?logout";//You can redirect wherever you want, but generally it's a good practice to show login screen again.
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (auth != null) {
+			new SecurityContextLogoutHandler().logout(request, response, auth);
+		}
+		return "redirect:/login?logout";// You can redirect wherever you want,
+										// but generally it's a good practice to
+										// show login screen again.
 	}
 
 	@RequestMapping("/userLogged")
 	public String userLogged() {
 		return "redirect:/index";
 	}
-	
+
 	@RequestMapping("/contactus")
 	public String contactUs() {
 		return "/contactus";
@@ -83,6 +84,7 @@ public class indexController {
 	@RequestMapping("/goTologin")
 	public ModelAndView goToLogin() {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("user", new User());
 		mav.setViewName("login");
 		return mav;
 	}
@@ -102,25 +104,23 @@ public class indexController {
 			mv.setViewName("register");
 			return mv;
 		} else {
-			user.setRole("ROLE_USER");
 			userDao.insertUser(user);// this will enter all data from
-											// register.jsp
-											// to H2 TABLE
-			mv.setViewName("modal");
+										// register.jsp
+										// to H2 TABLE
+			mv.setViewName("index");
 			return mv;
 		}
 
 	}
-	
+
 	@RequestMapping("/productCustList")
-		public ModelAndView productCustList(@RequestParam("cid") int cid)
-		{
-			System.out.println(cid);
-			ModelAndView mav = new ModelAndView();
-			mav.addObject("productList", productDao.getProductBypid(cid));
-			mav.setViewName("productCustList");
-			return mav;
-		}
+	public ModelAndView productCustList(@RequestParam("cid") int cid) {
+		System.out.println(cid);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("productList", productDao.getProductBypid(cid));
+		mav.setViewName("productCustList");
+		return mav;
+	}
 
 	@ModelAttribute
 	public void fetchData(Model m) {

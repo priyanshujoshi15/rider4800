@@ -21,7 +21,7 @@
 </head>
 
 <body>
-	<%@ include file="/WEB-INF/views/header.jsp"%>
+	<jsp:include page="header.jsp"></jsp:include>
 
 	<form:form modelAttribute="user" action="login" method="POST">
 
@@ -50,8 +50,7 @@
 
 				<td>Password</td>
 
-				<td><input type="password" name="password" id="password" /> 
-				</td>
+				<td><input type="password" name="password" id="password" /></td>
 
 			</tr>
 

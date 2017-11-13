@@ -6,7 +6,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/header.jsp"%>
+<jsp:include page="header.jsp"></jsp:include>
 <div class="container">
  <div id="myCarousel" class="carousel slide" data-ride="carousel">
  	<ol class="carousel-indicators">
