@@ -17,8 +17,12 @@ public class CategoryDaoImpl implements CategoryDao
 {
 	@Autowired
 	SessionFactory sessionFactory;
-
 	
+	@Autowired
+	public CategoryDaoImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
 	@Override
 	public boolean insertCategory(Category category) {
 		try {

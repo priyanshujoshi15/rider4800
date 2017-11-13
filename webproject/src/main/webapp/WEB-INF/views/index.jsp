@@ -6,7 +6,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/header.jsp" %>
+<%@ include file="/WEB-INF/views/header.jsp"%>
 <div class="container">
  <div id="myCarousel" class="carousel slide" data-ride="carousel">
  	<ol class="carousel-indicators">
@@ -17,13 +17,13 @@
 	
  	<div class="carousel-inner">
   		<div class="item active">
-  		<img class="img-rounded" class="img-responsive center-block" src="images/flow1.jpg" style="width:100%;height:80%" >
+  		<img class="img-rounded" class="img-responsive center-block" src="images/pic1.jpg" style="width:100%;height:80%" >
   		</div>
  		<div class="item">
-  		<img class="img-rounded" class="img-responsive center-block" src="images/flow2.jpg" style="width:100%;height:80%" >
+  		<img class="img-rounded" class="img-responsive center-block" src="images/pic2.jpg" style="width:100%;height:80%" >
   		</div>
   		<div class="item">
-  		<img class="img-rounded" class="img-responsive center-block" src="images/flow3.jpg" style="width:100%;height:80%" />
+  		<img class="img-rounded" class="img-responsive center-block" src="images/pic3.jpg" style="width:100%;height:80%" />
   		</div>
  	</div>
 

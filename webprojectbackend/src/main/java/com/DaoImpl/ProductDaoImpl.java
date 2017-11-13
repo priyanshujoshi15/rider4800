@@ -17,6 +17,11 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Autowired
 	SessionFactory sessionFactory;
+	
+	@Autowired
+	public ProductDaoImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
 	@Override
 	public boolean insertProduct(Product product) {

@@ -21,9 +21,9 @@
 
 <body>
 
-	<%-- <%@ include file="/WEB-INF/views/header.jsp" %>
+	<jsp:include page="header.jsp"></jsp:include>
 
-<div class="col-lg-12">
+<%-- <div class="col-lg-12">
 	<div class="row">
 	<form:form modelAttribute="user" action="saveRegister" method="POST" >
 	

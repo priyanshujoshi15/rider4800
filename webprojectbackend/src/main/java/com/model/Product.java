@@ -3,7 +3,10 @@ package com.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.springframework.stereotype.Component;
 
@@ -19,8 +22,16 @@ public class Product implements Serializable {
 	private int pid;
 	private String pname;
 	private String description;
-	private int price;
+	private Float price;
 	private int stock;
+	/*
+	@ManyToOne(fetch=FetchType.EAGER)
+	
+	@JoinColumn(name="cid")
+	private Category category;
+	@JoinColumn(name="sid")
+	private Supplier supplier;*/
+	
 	public int getPid() {
 		return pid;
 	}
@@ -39,10 +50,10 @@ public class Product implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getPrice() {
+	public Float getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 	public int getStock() {

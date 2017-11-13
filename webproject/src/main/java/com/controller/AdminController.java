@@ -1,63 +1,135 @@
-package com.controller;
 /*package com.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.io.BufferedOutputStream;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.Dao.CategoryDao;
+import com.Dao.ProductDao;
+import com.Dao.SupplierDao;
 import com.DaoImpl.CategoryDaoImpl;
 import com.DaoImpl.ProductDaoImpl;
 import com.DaoImpl.SupplierDaoImpl;
 import com.model.Category;
-import com.model.User;
+import com.model.Supplier;
 
-@Component
 @RequestMapping("/admin")
-public class adminController {
-
+@Controller
+public class adminController 
+{
 	@Autowired
 	SupplierDaoImpl supplierDaoImpl;
+
 	@Autowired
-	ProductDaoImpl prductDaoImpl;
+	ProductDaoImpl productDaoImpl;
+
 	@Autowired
 	CategoryDaoImpl categoryDaoImpl;
 
-	@RequestMapping("/admin")
-	public String addm()
-	{
-		return "admin";
-	}
-
-	
-		@RequestMapping("/adding")
-	public String addPage() 
-	{
+	@RequestMapping("/adding")
+	public String addPage() {
 		return "adding";
 	}
 
 	@RequestMapping("/index")
-	public String addHome()
-	{
+	public String addHome() {
+		return "index";
+	}
+	
+	@RequestMapping("/")
+	public String index() {
 		return "index";
 	}
 
-	@RequestMapping(value="/saveCat", method = RequestMethod.POST)
+	@RequestMapping("/error")
+	public String errorPage() {
+		return "/error";
+	}
+	
+	@RequestMapping("/userLogged")
+	public String userLogged() {
+		return "redirect:/index";
+	}
+	
+	@RequestMapping(value = "/saveCat", method = RequestMethod.POST)
 	@Transactional
-	public ModelAndView saveCategory(@RequestParam("cid") int cid, @RequestParam("cname"))
+	public ModelAndView saveCategory(@RequestParam("cid") int cid, @RequestParam("cname") String cname) {
+		ModelAndView mav = new ModelAndView();
+		Category cc = new Category();
+		cc.setCid(cid);
+		cc.setCname(cname);
+		categoryDaoImpl.insertCategory(cc);
+		mav.setViewName("modal");
+		return mav;
+	}
+
+	@RequestMapping(value = "/saveSupp", method = RequestMethod.POST)
+	@Transactional
+	public ModelAndView saveSupplier(@RequestParam("sid") int sid, @RequestParam("sname") String sname) {
+		ModelAndView mav = new ModelAndView();
+		Supplier ss = new Supplier();
+		ss.setSid(sid);
+		ss.setSname(sname);
+		supplierDaoImpl.insertSupplier(ss);
+		mav.setViewName("modal");
+		return mav;
+	}
+
+	@RequestMapping(value="/saveProd", method=RequestMethod.POST)
+	@Transactional
+	public ModelAndView saveProducts(HttpServletRequest request, @RequestParam("pname") String pname ,@RequestParam("description") String description, @RequestParam("price") int price, @RequestParam("stock") int stock)  
 	{
-		ModelAndView mv = new ModelAndView();
-		Category c = new Category();
-		c.setCid(cid); //setter method invoked
-		c.setCname(cname); //setter method invoked
+		Product prod = new Product();
+		prod.setPname(request.getParameter("pname"));
+		prod.setPrice(Float.parseFloat(request.getParameter("price")));
+		prod.setDescription(request.getParameter("description"));
+		prod.setStock(Integer.parseInt(request.getParameter("stock")));
+		prod.setCategory(categoryDaoImpl.getCategoryBycid(Integer.parseInt(request.getParameter("cid"))));
+		prod.setSupplier(supplierDaoImpl.getSupplierByid(Integer.parseInt(request.getParameter("sid"))));
 		
-		categoryDaoImpl.insertCategory(c); //insert() invoked from CategoryDaoImpl
+		String filepath=request.getSession().getServletContext().getRealPath("file");
+		String filename = file.getOriginalFilename(); //imagename
+		prod.setImgname(filename);
+		productDaoImpl.insertProduct(prod);
+		System.out.println("File path file" + filepath + " " + filename);
+		try
+		{
+			byte imagebyte[] = file.getBytes();
+			BufferedOutputStream fos = new BufferedOutputStream
+									   (new FileOutputStream(filepath+""));
+		}
 		
-		mv.setViewName("modal");
-		return mv;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return null;
+		
+	}
+	
+	@ModelAttribute
+	public Model addData(Model m)
+	{
+		m.addAttribute("catList", categoryDaoImpl.getAllCategories());
+		m.addAttribute("prodList", productDaoImpl.getAllProducts());
+		return m;
 	}
 }
 */

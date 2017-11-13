@@ -18,6 +18,11 @@ public class SupplierDaoImpl implements SupplierDao {
 	@Autowired
 	SessionFactory sessionFactory;
 
+	@Autowired
+	public SupplierDaoImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
 	@Override
 	public boolean insertSupplier(Supplier supplier) {
 		try {
@@ -40,7 +45,6 @@ public class SupplierDaoImpl implements SupplierDao {
 			return false;
 		}
 
-	
 	}
 
 	@Override
@@ -57,7 +61,7 @@ public class SupplierDaoImpl implements SupplierDao {
 	@Override
 	public Supplier getSupplierByid(int sid) {
 		return sessionFactory.getCurrentSession().get(Supplier.class, sid);
-	
+
 	}
 
 	@SuppressWarnings("unchecked")

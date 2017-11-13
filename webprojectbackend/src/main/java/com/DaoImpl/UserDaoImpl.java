@@ -18,6 +18,11 @@ public class UserDaoImpl implements UserDao {
 	@Autowired // this annotation will mark the object as singleton, i.e for
 				// only one user, one session factory will be invoked
 	SessionFactory sessionFactory;
+	
+	@Autowired
+	public UserDaoImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
 	@Override
 	public boolean insertUser(User user) // this method will be called from the

@@ -16,7 +16,7 @@
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet" />
-<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+
 <title>Login Page</title>
 </head>
 
@@ -50,8 +50,7 @@
 
 				<td>Password</td>
 
-				<td><input type="password" name="password" id="password" /> <input
-					type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				<td><input type="password" name="password" id="password" /> 
 				</td>
 
 			</tr>
