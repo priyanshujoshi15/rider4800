@@ -1,11 +1,8 @@
-/*package com.controller;
+package com.controller;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.io.BufferedOutputStream;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.Dao.CategoryDao;
 import com.Dao.ProductDao;
 import com.Dao.SupplierDao;
-import com.DaoImpl.CategoryDaoImpl;
-import com.DaoImpl.ProductDaoImpl;
-import com.DaoImpl.SupplierDaoImpl;
 import com.model.Category;
 import com.model.Supplier;
 
@@ -29,13 +23,13 @@ import com.model.Supplier;
 public class adminController 
 {
 	@Autowired
-	SupplierDaoImpl supplierDaoImpl;
+	SupplierDao supplierDao;
 
 	@Autowired
-	ProductDaoImpl productDaoImpl;
+	ProductDao productDao;
 
 	@Autowired
-	CategoryDaoImpl categoryDaoImpl;
+	CategoryDao categoryDao;
 
 	@RequestMapping("/adding")
 	public String addPage() {
@@ -69,7 +63,7 @@ public class adminController
 		Category cc = new Category();
 		cc.setCid(cid);
 		cc.setCname(cname);
-		categoryDaoImpl.insertCategory(cc);
+		categoryDao.insertCategory(cc);
 		mav.setViewName("modal");
 		return mav;
 	}
@@ -81,12 +75,12 @@ public class adminController
 		Supplier ss = new Supplier();
 		ss.setSid(sid);
 		ss.setSname(sname);
-		supplierDaoImpl.insertSupplier(ss);
+		supplierDao.insertSupplier(ss);
 		mav.setViewName("modal");
 		return mav;
 	}
 
-	@RequestMapping(value="/saveProd", method=RequestMethod.POST)
+	/*@RequestMapping(value="/saveProd", method=RequestMethod.POST)
 	@Transactional
 	public ModelAndView saveProducts(HttpServletRequest request, @RequestParam("pname") String pname ,@RequestParam("description") String description, @RequestParam("price") int price, @RequestParam("stock") int stock)  
 	{
@@ -122,14 +116,13 @@ public class adminController
 		
 		return null;
 		
-	}
+	}*/
 	
 	@ModelAttribute
 	public Model addData(Model m)
 	{
-		m.addAttribute("catList", categoryDaoImpl.getAllCategories());
-		m.addAttribute("prodList", productDaoImpl.getAllProducts());
+		m.addAttribute("catList", categoryDao.getAllCategories());
+		m.addAttribute("prodList", productDao.getAllProducts());
 		return m;
 	}
 }
-*/

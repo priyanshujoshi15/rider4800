@@ -41,7 +41,7 @@
 		<ul class="nav navbar-nav">
 			<li><a href="index">Home</a></li>
 
-			<li><a href="contactus"><i class="fa fa-address-book"
+			<li><a href="#"><i class="fa fa-address-book"
 					aria-hidden="true"></i></a></li>
 			<%-- <li><a href="${pageContext.request.contextPath}/goTologin">Login</a></li>
                 <li><a href="${pageContext.request.contextPath}/register">Register</a></li>

@@ -61,11 +61,6 @@ public class indexController {
 		return "redirect:/index";
 	}
 
-	@RequestMapping("/contactus")
-	public String contactUs() {
-		return "/contactus";
-	}
-
 	@RequestMapping("/error")
 	public String errorPage() {
 		return "/error";
