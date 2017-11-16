@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.Dao.CategoryDao;
 import com.model.Category;
 
-@Repository(value = "categoryDao")
+@Repository("categoryDaoImpl")
 @Transactional
 public class CategoryDaoImpl implements CategoryDao
 {
@@ -46,7 +46,7 @@ public class CategoryDaoImpl implements CategoryDao
 	}
 
 	@Override
-	public boolean deleteCategory(Category category) {
+	public boolean deleteCategory(int category) {
 		try {
 			sessionFactory.getCurrentSession().delete(category);
 			return true;

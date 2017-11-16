@@ -1,9 +1,14 @@
 package com.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.springframework.stereotype.Component;
 
@@ -18,7 +23,12 @@ public class Category implements Serializable {
 	@Id
 	private int cid;
 	private String cname;
+	
+	@OneToMany(targetEntity=Product.class, fetch=FetchType.EAGER, mappedBy="category", cascade = CascadeType.ALL)
+	private Set<Product> products = new HashSet<Product>(0);
+	
 	private String description;
+	
 	public int getCid() {
 		return cid;
 	}

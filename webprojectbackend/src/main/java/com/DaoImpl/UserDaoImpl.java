@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.Dao.UserDao;
 import com.model.User;
 
-@Repository(value = "userDao")
+@Repository("userDaoImpl")
 @Transactional
 public class UserDaoImpl implements UserDao {
 
@@ -50,7 +50,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public boolean deleteUser(User user) {
+	public boolean deleteUser(int user) {
 		try {
 			sessionFactory.getCurrentSession().delete(user);
 			return true;

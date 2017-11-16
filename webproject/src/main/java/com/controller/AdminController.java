@@ -3,6 +3,11 @@ package com.controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +15,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Dao.CategoryDao;
 import com.Dao.ProductDao;
 import com.Dao.SupplierDao;
+import com.DaoImpl.CategoryDaoImpl;
+import com.DaoImpl.ProductDaoImpl;
+import com.DaoImpl.SupplierDaoImpl;
 import com.model.Category;
+import com.model.Product;
 import com.model.Supplier;
 
 @RequestMapping("/admin")
@@ -23,13 +33,13 @@ import com.model.Supplier;
 public class adminController 
 {
 	@Autowired
-	SupplierDao supplierDao;
+	SupplierDaoImpl supplierDaoImpl;
 
 	@Autowired
-	ProductDao productDao;
+	ProductDaoImpl productDaoImpl;
 
 	@Autowired
-	CategoryDao categoryDao;
+	CategoryDaoImpl categoryDaoImpl;
 
 	@RequestMapping("/adding")
 	public String addPage() {
@@ -63,8 +73,8 @@ public class adminController
 		Category cc = new Category();
 		cc.setCid(cid);
 		cc.setCname(cname);
-		categoryDao.insertCategory(cc);
-		mav.setViewName("modal");
+		categoryDaoImpl.insertCategory(cc);
+		mav.setViewName("adding");
 		return mav;
 	}
 
@@ -75,54 +85,50 @@ public class adminController
 		Supplier ss = new Supplier();
 		ss.setSid(sid);
 		ss.setSname(sname);
-		supplierDao.insertSupplier(ss);
-		mav.setViewName("modal");
+		supplierDaoImpl.insertSupplier(ss);
+		mav.setViewName("adding");
 		return mav;
 	}
 
-	/*@RequestMapping(value="/saveProd", method=RequestMethod.POST)
+	@RequestMapping(value="/saveProd", method=RequestMethod.POST)
 	@Transactional
-	public ModelAndView saveProducts(HttpServletRequest request, @RequestParam("pname") String pname ,@RequestParam("description") String description, @RequestParam("price") int price, @RequestParam("stock") int stock)  
-	{
-		Product prod = new Product();
-		prod.setPname(request.getParameter("pname"));
-		prod.setPrice(Float.parseFloat(request.getParameter("price")));
-		prod.setDescription(request.getParameter("description"));
-		prod.setStock(Integer.parseInt(request.getParameter("stock")));
-		prod.setCategory(categoryDaoImpl.getCategoryBycid(Integer.parseInt(request.getParameter("cid"))));
-		prod.setSupplier(supplierDaoImpl.getSupplierByid(Integer.parseInt(request.getParameter("sid"))));
+	public ModelAndView saveProducts(HttpServletRequest request, @RequestParam("file") MultipartFile file )  
+	{	
+		ModelAndView mv = new ModelAndView();
+		Product p = new Product();
+		p.setPname(request.getParameter("pname"));
+		p.setPrice(Float.parseFloat(request.getParameter("price")));
+		p.setDescription(request.getParameter("description"));
+		p.setStock(Integer.parseInt(request.getParameter("stock")));
+		p.setCategory(categoryDaoImpl.getCategoryBycid(Integer.parseInt(request.getParameter("cid"))));
+		p.setSupplier(supplierDaoImpl.getSupplierByid(Integer.parseInt(request.getParameter("sid"))));
 		
-		String filepath=request.getSession().getServletContext().getRealPath("file");
+		String filepath=request.getSession().getServletContext().getRealPath("/");
 		String filename = file.getOriginalFilename(); //imagename
-		prod.setImgname(filename);
-		productDaoImpl.insertProduct(prod);
-		System.out.println("File path file" + filepath + " " + filename);
+		p.setImgname(filename);
+		productDaoImpl.insertProduct(p);
+		System.out.println("Filepath" + filepath + " " + filename);
 		try
 		{
 			byte imagebyte[] = file.getBytes();
 			BufferedOutputStream fos = new BufferedOutputStream
-									   (new FileOutputStream(filepath+""));
+									   (new FileOutputStream(filepath + "/images/" + filename));
+			fos.write(imagebyte);
+			fos.close();
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		return null;
-		
-	}*/
+		catch(IOException e)
+		{
+			System.out.println(e.getMessage());
+		}
+		mv.setViewName("adding");
+		return mv;
+	}
 	
 	@ModelAttribute
 	public Model addData(Model m)
 	{
-		m.addAttribute("catList", categoryDao.getAllCategories());
-		m.addAttribute("prodList", productDao.getAllProducts());
+		m.addAttribute("catList", categoryDaoImpl.getAllCategories());
+		m.addAttribute("prodList", productDaoImpl.getAllProducts());
 		return m;
 	}
 }

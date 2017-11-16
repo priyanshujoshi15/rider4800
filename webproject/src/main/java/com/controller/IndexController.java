@@ -29,16 +29,16 @@ import com.model.*;
 public class indexController {
 
 	@Autowired
-	UserDao userDao;
+	UserDaoImpl userDaoImpl;
 
 	@Autowired
-	SupplierDao supplierDao;
+	SupplierDaoImpl supplierDaoImpl;
 
 	@Autowired
-	ProductDao productDao;
+	ProductDaoImpl productDaoImpl;
 
 	@Autowired
-	CategoryDao categoryDao;
+	CategoryDaoImpl categoryDaoImpl;
 
 	@RequestMapping("/login")
 	public String login() {
@@ -99,7 +99,7 @@ public class indexController {
 			mv.setViewName("register");
 			return mv;
 		} else {
-			userDao.insertUser(user);// this will enter all data from
+			userDaoImpl.insertUser(user);// this will enter all data from
 										// register.jsp
 										// to H2 TABLE
 			mv.setViewName("index");
@@ -112,17 +112,17 @@ public class indexController {
 	public ModelAndView productCustList(@RequestParam("cid") int cid) {
 		System.out.println(cid);
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("productList", productDao.getProductBypid(cid));
+		mav.addObject("productList", productDaoImpl.getProductBypid(cid));
 		mav.setViewName("productCustList");
 		return mav;
 	}
 
 	@ModelAttribute
 	public void fetchData(Model m) {
-		m.addAttribute("catList", categoryDao.getAllCategories());
+		m.addAttribute("catList", categoryDaoImpl.getAllCategories());
 
-		m.addAttribute("prodList", productDao.getAllProducts());
+		m.addAttribute("prodList", productDaoImpl.getAllProducts());
 
-		m.addAttribute("supList", supplierDao.getAllSuppliers());
+		m.addAttribute("supList", supplierDaoImpl.getAllSuppliers());
 	}
 }

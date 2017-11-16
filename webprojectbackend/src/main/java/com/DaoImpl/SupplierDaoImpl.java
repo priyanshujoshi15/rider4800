@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.Dao.SupplierDao;
 import com.model.Supplier;
 
-@Repository(value = "supplierDao")
+@Repository("supplierDaoImpl")
 @Transactional
 public class SupplierDaoImpl implements SupplierDao {
 
@@ -48,7 +48,7 @@ public class SupplierDaoImpl implements SupplierDao {
 	}
 
 	@Override
-	public boolean deleteSupplier(Supplier supplier) {
+	public boolean deleteSupplier(int supplier) {
 		try {
 			sessionFactory.getCurrentSession().delete(supplier);
 			return true;

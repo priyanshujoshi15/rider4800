@@ -25,14 +25,15 @@
 	<div class="container">
 
 		<div class="page-header">
-			</br>
+			</div>
 		</div>
+		<br>
 
 		<div class="container">
 			<div class="row">
 
-				<div class="col-md-6">
-					<div class="panel with-nav-tabs panel-primary"></div>
+				<div class="col-md-9">
+					<div class="panel with-nav-tabs panel primary"></div>
 					<div class="panel-heading">
 						<ul class="nav nav-tabs">
 							<li class="active"><a href="#tab1Prime" data-toogle="tab">Category</a>
@@ -54,7 +55,7 @@
 									<h4>
 										<label>Category Name</label>
 									</h4>
-									<input class="form-control" type="text" name="cname" required /></br>
+									<input class="form-control" type="text" name="cname" required /><br>
 									<button class="btn btn-lg btn-primary" type="submit">Save</button>
 									<button class="btn btn-lg btn-primary" type="reset">Cancel</button>
 								</form>
@@ -69,7 +70,7 @@
 										<h4>
 											<label>Supplier Name</label>
 										</h4>
-										<input class="form-control" type="text" name="sname" required /></br>
+										<input class="form-control" type="text" name="sname" required /><br>
 										<button class="btn btn-lg btn-primary" type="submit">Save</button>
 										<button class="btn btn-lg btn-primary" type="reset">Cancel</button>
 									</form>
@@ -118,13 +119,13 @@
 												</select>
 											</div>
 
-											</br>
+											<br>
 											<div class="fileinput fileinput-new"
 												data-provides="fileinput">
 												<h4>
 													<Label>Image</Label>
 												</h4>
-												<input class="form-control" type="file" accept="image/*">
+												<input class="form-control" type="file" name="file" accept="image/*">
 											</div>
 											<button class="btn btn-lg btn-primary" type="submit">Save</button>
 											<button class="btn btn-lg btn-primary" type="reset">Cancel</button>

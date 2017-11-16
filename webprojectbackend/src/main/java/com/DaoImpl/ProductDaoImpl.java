@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.Dao.ProductDao;
 import com.model.Product;
 
-@Repository(value = "productDao")
+@Repository("productDaoImpl")
 @Transactional
 public class ProductDaoImpl implements ProductDao {
 
@@ -47,7 +47,7 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public boolean deleteProduct(Product product) {
+	public boolean deleteProduct(int product) {
 		try {
 			sessionFactory.getCurrentSession().delete(product);
 			return true;
