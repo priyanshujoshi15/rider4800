@@ -29,16 +29,16 @@ import com.model.*;
 public class indexController {
 
 	@Autowired
-	UserDaoImpl userDaoImpl;
+	UserDao userDaoImpl;
 
 	@Autowired
-	SupplierDaoImpl supplierDaoImpl;
+	SupplierDao supplierDaoImpl;
 
 	@Autowired
-	ProductDaoImpl productDaoImpl;
+	ProductDao productDaoImpl;
 
 	@Autowired
-	CategoryDaoImpl categoryDaoImpl;
+	CategoryDao categoryDaoImpl;
 
 	@RequestMapping("/login")
 	public String login() {
@@ -58,7 +58,7 @@ public class indexController {
 
 	@RequestMapping("/userLogged")
 	public String userLogged() {
-		return "redirect:/index";
+		return "redirect:/index" ;
 	}
 
 	@RequestMapping("/error")

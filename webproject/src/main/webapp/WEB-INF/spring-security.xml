@@ -3,7 +3,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
-	<!-- <http auto-config="true"> -->
 		<http auto-config="true">
 		<intercept-url pattern="/webapp/resources/**" access="permitAll()" />
 		<intercept-url pattern="/login" access="permitAll()" />
@@ -14,9 +13,7 @@
 			authentication-success-forward-url="/userLogged"
 			authentication-failure-forward-url="/error" />
 
-<!-- 		<access-denied-handler error-page="/error" />
-
-		<csrf disabled="true" /> -->
+		<csrf disabled="true" /> 
 
 		<logout logout-url="/logout" invalidate-session="true"
 			logout-success-url="/" />
@@ -25,7 +22,7 @@
 
 	<authentication-manager>
 		<authentication-provider>
-			<jdbc-user-service data-source-ref="dataSource"
+			<jdbc-user-service data-source-ref="datasource"
 				users-by-username-query="select email, password, 'TRUE' as enabled from user where email=?"
 				authorities-by-username-query="select email, role from user where email=?" />
 		</authentication-provider>

@@ -27,8 +27,6 @@ public class Category implements Serializable {
 	@OneToMany(targetEntity=Product.class, fetch=FetchType.EAGER, mappedBy="category", cascade = CascadeType.ALL)
 	private Set<Product> products = new HashSet<Product>(0);
 	
-	private String description;
-	
 	public int getCid() {
 		return cid;
 	}
@@ -41,12 +39,5 @@ public class Category implements Serializable {
 	public void setCname(String cname) {
 		this.cname = cname;
 	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
 
 }

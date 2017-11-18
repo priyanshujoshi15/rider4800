@@ -4,7 +4,6 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
-import org.hibernate.SessionBuilder;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -31,8 +30,8 @@ import com.model.User;
 public class HibernateConfiguration 
 {
 	@Autowired
-	@Bean/*(name="datasource")*/
-	public DataSource dataSource() {
+	@Bean(name="datasource")
+	public DataSource getH2DataSource() {
 		DriverManagerDataSource dsource = new DriverManagerDataSource();
 		dsource.setDriverClassName("org.h2.Driver");
 		dsource.setUrl("jdbc:h2:tcp://localhost/~/webap");
@@ -41,7 +40,7 @@ public class HibernateConfiguration
 		return dsource;
 	}
 
-	private Properties hibernateProperties() {
+	public Properties hibernateProperties() {
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 		properties.put("hibernate.show_sql", true);
@@ -62,45 +61,42 @@ public class HibernateConfiguration
 		return sb.buildSessionFactory();
 	}
 	
-	@Autowired
-	@Bean(name="supplierDaoImpl")
+	@Bean("supplierDaoImpl")
 	public SupplierDaoImpl getSuppData(SessionFactory sf)
 	{
 		return new SupplierDaoImpl(sf);
 	}
 	
-	@Autowired
-	@Bean(name="categoryDaoImpl")
+	@Bean("categoryDaoImpl")
 	public CategoryDaoImpl getCatData(SessionFactory sf)
 	{
 		return new CategoryDaoImpl(sf);
 	}
 	
-	@Autowired
-	@Bean(name="productDaoImpl")
+	@Bean("productDaoImpl")
 	public ProductDaoImpl getProdData(SessionFactory sf)
 	{
 		return new ProductDaoImpl(sf);
 	}
 	
-	@Autowired
-	@Bean(name="UserDaoImpl")
+	@Bean("userDaoImpl")
 	public UserDaoImpl getUseData(SessionFactory sf)
 	{
 		return new UserDaoImpl(sf);
 	}
 	
+	@Autowired
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-		sessionFactory.setDataSource(dataSource());
+		sessionFactory.setDataSource(getH2DataSource());
 		sessionFactory.setPackagesToScan(new String[] { "com.model" });
 		sessionFactory.setHibernateProperties(hibernateProperties());
 		return sessionFactory;
 	}
 	
-	@Bean
 	@Autowired
+	@Bean
 	public HibernateTransactionManager transactionManager(SessionFactory s) {
 		HibernateTransactionManager txManager = new HibernateTransactionManager();
 		txManager.setSessionFactory(s);

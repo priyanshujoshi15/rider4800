@@ -27,7 +27,7 @@ public class Product implements Serializable {
 	private Float price;
 	private int stock;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cid")
 	private Category category;	//fields are in object form
 	@ManyToOne

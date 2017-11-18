@@ -49,6 +49,12 @@ public class Supplier implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public Set<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(Set<Product> products) {
+		this.products = products;
+	}
 	
 	
 	}
