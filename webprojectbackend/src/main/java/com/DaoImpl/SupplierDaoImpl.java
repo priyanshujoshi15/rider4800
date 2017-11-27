@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.Dao.SupplierDao;
 import com.model.Supplier;
 
+@SuppressWarnings("deprecation")
 @Repository("supplierDaoImpl")
 @Transactional
 public class SupplierDaoImpl implements SupplierDao {
@@ -65,7 +66,7 @@ public class SupplierDaoImpl implements SupplierDao {
 
 	}
 
-	@SuppressWarnings("unchecked")
+	
 	@Override
 	public List<Supplier> getAllSuppliers() {
 		return sessionFactory.getCurrentSession().createQuery("from Supplier").list();

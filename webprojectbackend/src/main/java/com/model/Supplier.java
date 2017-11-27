@@ -9,11 +9,13 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 @Component
 @Entity
+@Table(name = "Supplier")
 public class Supplier implements Serializable {
 
 	/**
@@ -29,8 +31,6 @@ public class Supplier implements Serializable {
 	
 	private Set<Product> products = new HashSet<Product>(0);
 	
-	private String description;
-	
 	public int getSid() {
 		return sid;
 	}
@@ -42,12 +42,6 @@ public class Supplier implements Serializable {
 	}
 	public void setSname(String sname) {
 		this.sname = sname;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
 	}
 	public Set<Product> getProducts() {
 		return products;

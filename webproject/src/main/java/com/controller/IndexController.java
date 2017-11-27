@@ -2,6 +2,8 @@ package com.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,23 +31,23 @@ import com.model.*;
 public class indexController {
 
 	@Autowired
-	UserDao userDaoImpl;
+	UserDaoImpl userDaoImpl;
 
 	@Autowired
-	SupplierDao supplierDaoImpl;
+	SupplierDaoImpl supplierDaoImpl;
 
 	@Autowired
-	ProductDao productDaoImpl;
+	ProductDaoImpl productDaoImpl;
 
 	@Autowired
-	CategoryDao categoryDaoImpl;
+	CategoryDaoImpl categoryDaoImpl;
 
 	@RequestMapping("/login")
 	public String login() {
 		return "/login";
 	}
 
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
 	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (auth != null) {
@@ -93,7 +95,7 @@ public class indexController {
 	}
 
 	@RequestMapping(value = "/saveRegister", method = RequestMethod.POST)
-	public ModelAndView saveUser(@ModelAttribute("user") User user, BindingResult res) {
+	public ModelAndView saveUser(@Valid @ModelAttribute("user") User user, BindingResult res) {
 		ModelAndView mv = new ModelAndView();
 		if (res.hasErrors()) {
 			mv.setViewName("register");

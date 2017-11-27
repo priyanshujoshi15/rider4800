@@ -23,193 +23,65 @@
 
 	<jsp:include page="header.jsp"></jsp:include>
 
-<%-- <div class="col-lg-12">
-	<div class="row">
-	<form:form modelAttribute="user" action="saveRegister" method="POST" >
-	
-	<spring:bind path="email">
-		  <div class="form-group">
-			<label class="col-sm-2 control-label">Email</label>
-			<div class="col-sm-10">
-				<form:input path="email" type="text" class="form-control"
-                                id="email" placeholder="Enter Mail Id" />
-				<form:errors path="email" class="control-label" />
-			</div>
-		  </div>
-		</spring:bind>
-			
-			<spring:bind path="name">
-		  <div class="form-group">
-			<label class="col-sm-2 control-label">Name</label>
-			<div class="col-sm-10">
-				<form:input path="name" type="text" class="form-control"
-                                id="email" placeholder="Enter Name" />
-				<form:errors path="name" class="control-label" />
-			</div>
-		  </div>
-		</spring:bind>
-		
-		<spring:bind path="enabled">
-		  <div class="form-group">
-			<label class="col-sm-2 control-label">Enabled</label>
-			<div class="col-sm-10">
-				<form:input path="enabled" type="text" class="form-control"
-                                id="enabled" placeholder="Enter Contact No." />
-				<form:errors path="enabled" class="control-label" />
-			</div>
-		  </div>
-		</spring:bind>
-	
-		
-			<spring:bind path="password">
-		  <div class="form-group">
-			<label class="col-sm-2 control-label">Password</label>
-			<div class="col-sm-10">
-				<form:input path="password" type="password" class="form-control"
-                                id="password" placeholder="Enter Password" />
-				<form:errors path="password" class="control-label" />
-			</div>
-		  </div>
-		</spring:bind>
-		
-		<spring:bind path="role">
-		  <div class="form-group">
-			<label class="col-sm-2 control-label">Role</label>
-			<div class="col-sm-10">
-				<form:input path="role" type="text" class="form-control"
-                                id="role" placeholder="Enter Role" />
-				<form:errors path="role" class="control-label" />
-			</div>
-		  </div>
-		</spring:bind>	
-		
-		<spring:bind path="address">
-		  <div class="form-group">
-			<label class="col-sm-2 control-label">Address</label>
-			<div class="col-sm-10">
-				<form:input path="address" type="text" class="form-control"
-                                id="address" placeholder="Enter Address" />
-				<form:errors path="address" class="control-label" />
-			</div>
-		  </div>
-		</spring:bind>
-		
-		<spring:bind path="phone">
-		  <div class="form-group">
-			<label class="col-sm-2 control-label">Contact No.</label>
-			<div class="col-sm-10">
-				<form:input path="phone" type="text" class="form-control"
-                                id="phone" placeholder="Enter Contact No." />
-				<form:errors path="phone" class="control-label" />
-			</div>
-		  </div>
-		</spring:bind>
-		
-		<button type="submit" class="btn btn-lg btn-info" >Submit</button>
-		
-		<!-- <div class="form-group">
-		  <div class="col-sm-offset-2 col-sm-10">
-			     <button class="button" style="vertical-align:middle"><span>Submit</span></button>
-			     <button class="button" style="vertical-align:middle"><span>Cancel</span></button>
-		  </div>
-		</div> -->
-		
-		</div>
-		</form:form>
-		</div>
-		</div>
- --%>
-
 	<div class="generic-container">
-
-		<div class="well lead">User Registration Form</div>
-		<form:form method="POST" action="saveRegister" modelAttribute="user" class="form-horizontal">
-
+		<h1>Registration Form</h1>
+		<div class="col-lg-12">
 			<div class="row">
-				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="email">Email</label>
-					<div class="col-md-7">
-						<form:input type="text" path="email" id="email"
-							class="form-control input-sm" placeholder="Enter Email" />
-						<div class="has-error">
-							<form:errors path="email" class="help-inline" />
+				<form:form modelAttribute="user" action="saveRegister" method="POST">
+					<div class="col-lg-12">
+						<div class="form-group">
+							<form:errors path="email" cssclass="err" />
+							<br> <label>Email:</label>
+							<form:input path="email" placeholder="Enter Mail ID.."
+								class="form-control" />
 						</div>
-					</div>
-				</div>
-			</div>
 
-			<div class="row">
-				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="address">Address</label>
-					<div class="col-md-7">
-						<form:input type="text" path="address" id="address"
-							class="form-control input-sm" placeholder="Enter Address"/>
-						<div class="has-error">
-							<form:errors path="address" class="help-inline" />
+						<div class="form-group">
+							<form:errors path="address" cssclass="err" />
+							<br> <label>Address:</label> 
+							<form:input path="address" placeholder="Enter Address.."
+								class="form-control" />
 						</div>
-					</div>
-				</div>
-			</div>
 
-			<div class="row">
-				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="name">Name</label>
-					<div class="col-md-7">
-						<form:input type="text" path="name" id="name"
-							class="form-control input-sm" placeholder="Enter Name" />
-						<div class="has-error">
-							<form:errors path="name" class="help-inline" />
+						<div class="form-group">
+							<form:errors path="name" cssclass="err" />
+							<br> <label>Name:</label> 
+							<form:input path="name" placeholder="Enter Name.."
+								class="form-control" />
 						</div>
-					</div>
-				</div>
-			</div>
 
-			<div class="row">
-				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="password">Password</label>
-					<div class="col-md-7">
-						<form:input type="text" path="password" id="password"
-							class="form-control input-sm" placeholder="Enter Password"/>
-						<div class="has-error">
-							<form:errors path="password" class="help-inline" />
+						<div class="form-group">
+							<form:errors path="password" cssclass="err" />
+							<br> <label>Password:</label> 
+							<form:input path="password" placeholder="Enter Password.."
+								class="form-control" />
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="phone">Phone</label>
-					<div class="col-md-7">
-						<form:input type="text" path="phone" id="phone"
-							class="form-control input-sm" placeholder="Enter Phone"/>
-						<div class="has-error">
-							<form:errors path="phone" class="help-inline" />
+
+						<div class="form-group">
+							<form:errors path="phone" cssclass="err" />
+							<br> <label>Phone:</label> 
+							<form:input path="phone" placeholder="Enter Contact No.."
+								class="form-control" />
 						</div>
-					</div>
-				</div>
-			</div>
 
-			<div class="row">
-				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="roles">Roles</label>
-					<div class="col-md-7">
-						<form:input path="role" type="text" class="form-control" id="role"
-							placeholder="Enter Role" />
-						<form:errors path="role" class="control-label" />
-					</div>
-				</div>
-			</div>
+						<div class="form-group">
+							<form:errors path="role" cssclass="err" />
+							<br> <label>Role:</label> 
+							<form:input path="role" placeholder="Enter Role.."
+								class="form-control" />
+						</div>
 
-			<div class="row">
-				<div class="form-actions floatRight">
+						<div class="form-group">
 							<input type="submit" value="Register"
-								class="btn btn-primary btn-sm"  /> or <a
+								class="btn btn-primary btn-sm" /> or <a
 								href="<c:url value='/' />">Cancel</a>
-				</div>
+						</div>
+
+					</div>
+
+				</form:form>
 			</div>
-		</form:form>
+		</div>
 	</div>
-
-
 </body>
 </html>

@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.Dao.UserDao;
 import com.model.User;
-
+@SuppressWarnings("deprecation")
 @Repository("userDaoImpl")
 @Transactional
 public class UserDaoImpl implements UserDao {

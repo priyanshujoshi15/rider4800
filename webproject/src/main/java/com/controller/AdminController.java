@@ -33,13 +33,13 @@ import com.model.Supplier;
 public class adminController 
 {
 	@Autowired
-	SupplierDao supplierDaoImpl;
+	SupplierDaoImpl supplierDaoImpl;
 
 	@Autowired
-	ProductDao productDaoImpl;
+	ProductDaoImpl productDaoImpl;
 
 	@Autowired
-	CategoryDao categoryDaoImpl;
+	CategoryDaoImpl categoryDaoImpl;
 
 	@RequestMapping("/adding")
 	public String addPage() {

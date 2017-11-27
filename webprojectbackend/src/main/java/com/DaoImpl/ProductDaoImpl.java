@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.Dao.ProductDao;
 import com.model.Product;
-
+@SuppressWarnings("deprecation")
 @Repository("productDaoImpl")
 @Transactional
 public class ProductDaoImpl implements ProductDao {

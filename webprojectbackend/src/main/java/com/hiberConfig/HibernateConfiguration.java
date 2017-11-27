@@ -15,11 +15,15 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.DaoImpl.CartDaoImpl;
 import com.DaoImpl.CategoryDaoImpl;
+import com.DaoImpl.OrdersDaoImpl;
 import com.DaoImpl.ProductDaoImpl;
 import com.DaoImpl.SupplierDaoImpl;
 import com.DaoImpl.UserDaoImpl;
+import com.model.Cart;
 import com.model.Category;
+import com.model.Orders;
 import com.model.Product;
 import com.model.Supplier;
 import com.model.User;
@@ -58,14 +62,19 @@ public class HibernateConfiguration
 		sb.addAnnotatedClass(Category.class);
 		sb.addAnnotatedClass(Product.class);
 		sb.addAnnotatedClass(Supplier.class);
+		sb.addAnnotatedClass(Cart.class);
+		sb.addAnnotatedClass(Orders.class);
+		
 		return sb.buildSessionFactory();
 	}
 	
+	@Autowired
 	@Bean("supplierDaoImpl")
 	public SupplierDaoImpl getSuppData(SessionFactory sf)
 	{
 		return new SupplierDaoImpl(sf);
 	}
+	@Autowired
 	
 	@Bean("categoryDaoImpl")
 	public CategoryDaoImpl getCatData(SessionFactory sf)
@@ -73,16 +82,34 @@ public class HibernateConfiguration
 		return new CategoryDaoImpl(sf);
 	}
 	
+	@Autowired
 	@Bean("productDaoImpl")
 	public ProductDaoImpl getProdData(SessionFactory sf)
 	{
 		return new ProductDaoImpl(sf);
 	}
 	
+	@Autowired
 	@Bean("userDaoImpl")
 	public UserDaoImpl getUseData(SessionFactory sf)
 	{
 		return new UserDaoImpl(sf);
+	}
+	
+	@Autowired
+	@Bean("cartDaoImpl")
+	public CartDaoImpl getCartData(SessionFactory sf)
+
+	{
+		return new CartDaoImpl(sf);
+	}
+	
+	
+	@Autowired
+	@Bean("orderDaoImpl")
+	public OrdersDaoImpl getOrdersData(SessionFactory sf)
+	{
+		return new OrdersDaoImpl(sf);
 	}
 	
 	@Autowired
@@ -94,9 +121,9 @@ public class HibernateConfiguration
 		sessionFactory.setHibernateProperties(hibernateProperties());
 		return sessionFactory;
 	}
-	
+
 	@Autowired
-	@Bean
+	@Bean("transactionManager")
 	public HibernateTransactionManager transactionManager(SessionFactory s) {
 		HibernateTransactionManager txManager = new HibernateTransactionManager();
 		txManager.setSessionFactory(s);
