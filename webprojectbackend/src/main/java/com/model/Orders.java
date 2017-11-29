@@ -34,6 +34,15 @@ public class Orders implements Serializable {
 	@JoinColumn(name = "email")
 	private User user;
 	
+	private double Total;
+	public double getTotal() {
+		return Total;
+	}
+
+	public void setTotal(double total) {
+		Total = total;
+	}
+
 	private String payment;
 
 	public int getOrderId() {

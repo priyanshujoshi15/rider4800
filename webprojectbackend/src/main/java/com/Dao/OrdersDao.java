@@ -4,6 +4,6 @@ import com.model.Orders;
 
 public interface OrdersDao {
 	
-	public void insert(Orders order);
+	public boolean insertOrders(Orders order);
 
 }

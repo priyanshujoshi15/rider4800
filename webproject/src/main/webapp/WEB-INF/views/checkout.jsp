@@ -20,8 +20,6 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-
-
 	<br>
 
 	<div class="container">
@@ -66,6 +64,10 @@
 									<tr>
 										<td colspan="3">Address:</td>
 										<td>${user.address}</td>
+									</tr>
+									<tr>
+										<td colspan="3">Total Amount:</td>
+										<td>${gtot}</td>
 									</tr>
 								</table>
 							</div>

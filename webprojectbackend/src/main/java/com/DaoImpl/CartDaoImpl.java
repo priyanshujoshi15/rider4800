@@ -15,8 +15,8 @@ import com.Dao.CategoryDao;
 import com.model.Cart;
 import com.model.Category;
 
-@SuppressWarnings("deprecation")
-@Repository("cartDaoImpl")
+@SuppressWarnings(value="deprecation")
+@Repository(value="cartDaoImpl")
 @Transactional
 
 public class CartDaoImpl implements CartDao 

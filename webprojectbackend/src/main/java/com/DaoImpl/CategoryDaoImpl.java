@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.Dao.CategoryDao;
 import com.model.Category;
-@SuppressWarnings("deprecation")
-@Repository("categoryDaoImpl")
+@SuppressWarnings(value="deprecation")
+@Repository(value="categoryDaoImpl")
 @Transactional
 public class CategoryDaoImpl implements CategoryDao
 {

@@ -78,7 +78,7 @@
 					<c:if test="${pageContext.request.userPrincipal.name!=null}">
 						<li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
 						<li><a href="<c:url value="/logout"/>">Logout</a></li>
-						<li><a href="${pageContext.request.contextPath}/goToCart">My
+						<li><a href="${pageContext.request.contextPath}/gotoCart">My
 								Cart <i class="fa fa-cart-plus" aria-hidden="true"></i>
 						</a></li>
 

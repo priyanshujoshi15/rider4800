@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.Dao.SupplierDao;
 import com.model.Supplier;
 
-@SuppressWarnings("deprecation")
-@Repository("supplierDaoImpl")
+@SuppressWarnings(value="deprecation")
+@Repository(value="supplierDaoImpl")
 @Transactional
 public class SupplierDaoImpl implements SupplierDao {
 

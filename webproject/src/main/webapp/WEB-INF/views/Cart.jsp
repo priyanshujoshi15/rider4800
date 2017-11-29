@@ -23,7 +23,7 @@
 
 	<div class="container">
 		<h4>
-			<img>
+			<img alt="" src="${pageContext.request.contextPath }/images/cart.jpeg"> &nbsp;Add to Cart
 		</h4>
 		<table id="cart" class="table-hover table-condensed">
 

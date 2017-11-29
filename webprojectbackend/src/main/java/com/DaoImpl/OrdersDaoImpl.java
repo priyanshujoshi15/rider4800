@@ -16,8 +16,8 @@ import com.model.Cart;
 import com.model.Category;
 import com.model.Orders;
 
-@SuppressWarnings("deprecation")
-@Repository("orderDaoImpl")
+@SuppressWarnings(value="deprecation")
+@Repository(value="orderDaoImpl")
 @Transactional
 public class OrdersDaoImpl
 {
@@ -30,13 +30,14 @@ public class OrdersDaoImpl
 		this.sessionFactory = sessionFactory;
 	}
 	
-	public void insert(Orders order)
-	{
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.persist(order);
-		session.getTransaction().commit();
-		
+	public boolean insertOrders(Orders order) {
+		try {
+			sessionFactory.getCurrentSession().save(order);
+			return true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
-	
+
 }
