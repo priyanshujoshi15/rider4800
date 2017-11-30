@@ -12,9 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.Dao.SupplierDao;
 import com.model.Supplier;
 
-@SuppressWarnings(value="deprecation")
-@Repository(value="supplierDaoImpl")
-@Transactional
+@SuppressWarnings("unused")
+@Repository("supplierDao")
+@Service
+
 public class SupplierDaoImpl implements SupplierDao {
 
 	@Autowired

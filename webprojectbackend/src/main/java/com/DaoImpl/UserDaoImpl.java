@@ -11,9 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.Dao.UserDao;
 import com.model.User;
-@SuppressWarnings(value="deprecation")
-@Repository(value="userDaoImpl")
-@Transactional
+@SuppressWarnings("unused")
+@Repository("userDao")
+@Service
+
 public class UserDaoImpl implements UserDao {
 
 	@Autowired // this annotation will mark the object as singleton, i.e for

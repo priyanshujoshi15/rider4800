@@ -28,7 +28,7 @@ import com.DaoImpl.SupplierDaoImpl;
 import com.model.Category;
 import com.model.Product;
 import com.model.Supplier;
-
+@SuppressWarnings("unused")
 @RequestMapping("/admin")
 @Controller
 public class adminController {

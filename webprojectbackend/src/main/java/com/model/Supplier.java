@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
-
+@SuppressWarnings("unused")
 @Component
 @Entity
 @Table(name = "Supplier")

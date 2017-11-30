@@ -15,9 +15,9 @@ import com.Dao.CategoryDao;
 import com.model.Cart;
 import com.model.Category;
 
-@SuppressWarnings(value="deprecation")
-@Repository(value="cartDaoImpl")
-@Transactional
+@SuppressWarnings("unused")
+@Repository("cartDao")
+@Service
 
 public class CartDaoImpl implements CartDao 
 {
@@ -30,6 +30,7 @@ public class CartDaoImpl implements CartDao
 		this.sessionFactory = sessionFactory;
 	}
 	
+	@Override
 	public void insert(Cart cart)
 	{
 		Session session = sessionFactory.openSession();

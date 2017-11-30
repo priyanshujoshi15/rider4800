@@ -11,9 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.Dao.ProductDao;
 import com.model.Product;
-@SuppressWarnings(value="deprecation")
-@Repository(value="productDaoImpl")
-@Transactional
+@SuppressWarnings("unused")
+@Repository("productDao")
+@Service
+
 public class ProductDaoImpl implements ProductDao {
 
 	@Autowired
@@ -63,7 +64,7 @@ public class ProductDaoImpl implements ProductDao {
 		return sessionFactory.getCurrentSession().get(Product.class, pid);
 	}
 
-	@SuppressWarnings("unchecked")
+	
 	@Override
 	public List<Product> getAllProducts() {
 		return sessionFactory.getCurrentSession().createQuery("from Product").list();

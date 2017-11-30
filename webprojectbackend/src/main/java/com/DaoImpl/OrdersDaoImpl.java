@@ -12,14 +12,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.Dao.CartDao;
 import com.Dao.CategoryDao;
+import com.Dao.OrdersDao;
 import com.model.Cart;
 import com.model.Category;
 import com.model.Orders;
 
-@SuppressWarnings(value="deprecation")
-@Repository(value="orderDaoImpl")
-@Transactional
-public class OrdersDaoImpl
+@SuppressWarnings("unused")
+@Repository("orderDao")
+@Service
+
+public class OrdersDaoImpl implements OrdersDao
 {
 	
 	@Autowired

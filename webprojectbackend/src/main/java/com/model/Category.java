@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import org.springframework.stereotype.Component;
-
+@SuppressWarnings("unused")
 @Entity
 @Component
 public class Category implements Serializable {

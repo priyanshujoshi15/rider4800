@@ -11,9 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.Dao.CategoryDao;
 import com.model.Category;
-@SuppressWarnings(value="deprecation")
-@Repository(value="categoryDaoImpl")
-@Transactional
+@SuppressWarnings("unused")
+@Repository("categoryDao")
+@Service
+
 public class CategoryDaoImpl implements CategoryDao
 {
 	@Autowired
@@ -62,7 +63,7 @@ public class CategoryDaoImpl implements CategoryDao
 		return sessionFactory.getCurrentSession().get(Category.class, cid);	
 		}
 
-	@SuppressWarnings("unchecked")
+	
 	@Override
 	public List<Category> getAllCategories() {
 		return sessionFactory.getCurrentSession().createQuery("from Category").list();

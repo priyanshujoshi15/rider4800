@@ -69,35 +69,35 @@ public class HibernateConfiguration
 	}
 	
 	@Autowired
-	@Bean(name="supplierDaoImpl")
+	@Bean(name="supplierDao")
 	public SupplierDaoImpl getSuppData(SessionFactory sf)
 	{
 		return new SupplierDaoImpl(sf);
 	}
-	@Autowired
 	
-	@Bean(name="categoryDaoImpl")
+	@Autowired
+	@Bean(name="categoryDao")
 	public CategoryDaoImpl getCatData(SessionFactory sf)
 	{
 		return new CategoryDaoImpl(sf);
 	}
 	
 	@Autowired
-	@Bean(name="productDaoImpl")
+	@Bean(name="productDao")
 	public ProductDaoImpl getProdData(SessionFactory sf)
 	{
 		return new ProductDaoImpl(sf);
 	}
 	
 	@Autowired
-	@Bean(name="userDaoImpl")
+	@Bean(name="userDao")
 	public UserDaoImpl getUseData(SessionFactory sf)
 	{
 		return new UserDaoImpl(sf);
 	}
 	
 	@Autowired
-	@Bean(name="cartDaoImpl")
+	@Bean(name="cartDao")
 	public CartDaoImpl getCartData(SessionFactory sf)
 
 	{
@@ -106,7 +106,7 @@ public class HibernateConfiguration
 	
 	
 	@Autowired
-	@Bean(name="orderDaoImpl")
+	@Bean(name="orderDao")
 	public OrdersDaoImpl getOrdersData(SessionFactory sf)
 	{
 		return new OrdersDaoImpl(sf);

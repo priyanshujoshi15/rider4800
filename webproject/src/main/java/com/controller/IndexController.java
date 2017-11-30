@@ -26,7 +26,7 @@ import com.DaoImpl.ProductDaoImpl;
 import com.DaoImpl.SupplierDaoImpl;
 import com.DaoImpl.UserDaoImpl;
 import com.model.*;
-
+@SuppressWarnings("unused")
 @Controller
 public class indexController {
 

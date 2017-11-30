@@ -30,7 +30,7 @@ import com.model.Cart;
 import com.model.Orders;
 import com.model.Product;
 import com.model.User;
-
+@SuppressWarnings("unused")
 @Controller
 public class cartController {
 	@Autowired
